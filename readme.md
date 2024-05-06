@@ -1,4 +1,14 @@
-Deep Learning Exam Preparation Questions
+# Deep Learning Exam Preparation Questions
+
+## What is this
+
+This a list of questions given by my teacher [Nwoye Chineduinnocent](https://scholar.google.com/citations?user=9lKxBUoAAAAJ&hl=en) to prepare for the deeplearning exam of the deeplearning course of Telecom Strasbourg.
+
+Answers are by whoever wants to answer them.
+
+You can find questions without answers in the file `questions.md`.
+
+## Questions
 
 1. What is artificial intelligence?
 
@@ -55,7 +65,7 @@ The induced field is the sum of the products of the weights and the inputs of a 
     Nonlinearity
 
 14. Mention 5 ways a feedforward neural network is different from a recurrent one?
-    
+
     Data flows in one direction
     No memory
 
