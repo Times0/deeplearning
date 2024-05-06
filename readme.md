@@ -6,7 +6,7 @@ This a list of questions given by my teacher [Nwoye Chineduinnocent](https://sch
 
 Answers are by whoever wants to answer them.
 
-You can find questions without answers in the file `questions.md`.
+You can find questions without answers in the file [questions.md](https://github.com/Times0/deeplearning/blob/main/questions.md)
 
 ## Questions
 
