@@ -1,10 +1,14 @@
 # Deep Learning Exam Preparation Questions
 
+Pull requests are welcome :)
+
 ## What is this
 
 This a list of questions given by my teacher [Nwoye Chineduinnocent](https://scholar.google.com/citations?user=9lKxBUoAAAAJ&hl=en) to prepare for the deeplearning exam of the deeplearning course of Telecom Strasbourg.
 
-Answers are by whoever wants to answer them.
+I think these questions give a good overview of deeplearning so my goal is to fill this list with high quality answers. No bs every word matters. Keep the answers concise.
+
+The goal is not to have this be understandable by a total beginner but to be a good reference for someone who already knows the basics of deeplearning.
 
 You can find questions without answers in the file [questions.md](https://github.com/Times0/deeplearning/blob/main/questions.md)
 
