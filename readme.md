@@ -34,6 +34,8 @@ Machine learning is an artificial intelligence technique where the machine learn
 
 Deep learning is the process for a machine to learn by using an artificial neural network and data.
 
+Deep learning techniques belong to a category within machine learning techniques. The main difference is that their architectures consist of multiple layers, which allows for such models to learn **feature hierarchies**. Hence, layers of deep learning models learn intermediate representations of the data gradually, up until the desired outcome. 
+
 6. How does ANN learn complex patterns and relationships in data?
 
 It can learn complex patterns thanks to its different weights. What makes the neural network powerful is its ability to depict non linear patterns with the activation functions. A network can approximate any function. (Universal approximation theorem)
@@ -143,6 +145,17 @@ The induced field is the sum of the products of the weights and the inputs of a 
 74. What is a dataloader?
 75. What are the major considerations when building a dataloader?
 76. What is a Convolutional Neural Network and what is it used for?
+
+CNN is a type of a Deep Neural Network for local **feature extraction** at every layer. Meaningful features are learnt from small, localized regions of the input data.
+
+The CNN architectures are primarily used for computer vision tasks but are not limited to them.
+Basically, CNN models can be used on all sorts of data, like text or audio, as long as the input can be split into features. 
+
+For example, an hierarchy to be learnt from an image can be: pixel -> edge -> texton -> motif -> contour -> object.
+
+For text data, it can be: character -> word -> clause -> sentence -> story.
+
+
 77. Mention at least 7 layers that can be found in a CNN?
 78. What is a convolution?
 79. Write the mathematics of a convolution operation?
