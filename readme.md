@@ -58,7 +58,17 @@ The induced field is the sum of the products of the weights and the inputs of a 
     - silu
 11. Write the mathematical formula of at least 10 activation functions.
 
-    Boring
+    Binary step: $`f(x) = \begin{cases} 0 & \text{if } x < 0 \\ 1 & \text{if } x \ge 0 \end{cases}`$
+     
+     $`\sigma(x) = \frac{1}{1 + e^{-x}}`$
+
+     $`\text{ReLU}(x) = \max(0, x) = \begin{cases} 0 & \text{if } x \le 0 \\ x & \text{if } x > 0 \end{cases}`$
+
+     $`\text{Leaky ReLU}(x) = \begin{cases} 0.01x & \text{if } x \le 0 \\ x & \text{if } x > 0 \end{cases}`$
+
+     $`\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}`$
+
+     $`\text{SiLU}(x) = \frac{x}{1 + e^{-x}}`$
 
 12. Mention at least 3 activation functions that scale the values of their inputs between 0 and 1?
 
@@ -86,12 +96,28 @@ The induced field is the sum of the products of the weights and the inputs of a 
     We Don't have labels associated to each value in the data
 
 18. Give 3 examples of tasks performed using supervised and unsupervised learning?
+
+    supervised learning: image classification, sentiment analysis, machine translation
+
+    unsupervised learning: clustering, dimensionality reduction, anomaly detection (e.g. in time series)
+
 19. What is self-supervised learning?
 20. What is weakly-supervised learning?
 21. What is semi-supervised learning?
 22. When would you choose to train your model in an unsupervised manner?
+
 23. Mention the 3 standard splits of a dataset?
+
+    Training set, validation set, test set
+
 24. What are the uses of each of the splits of dataset in deep learning experiment?
+
+    Training set is used to train the model.
+
+    Validation set is used to select the best hyperparameters of the model and to prevent the model from overfitting to the training set data. If the model's performance on the validation set starts to decrease, while the performance on the training set continues to increase, this is a sign that the model is overfitting.
+
+    Test set is used to evaluate the model and estimate its performance on unseen data.
+
 25. Differentiate between linear and non-linear classifier?
 26. Give 2 examples each for linear and non-linear classifiers?
 27. What type of data do you require to use a non-linear classifier?
