@@ -135,12 +135,41 @@ The induced field is the sum of the products of the weights and the inputs of a 
     Test set is used to evaluate the model and estimate its performance on unseen data.
 
 25. Differentiate between linear and non-linear classifier?
+
+    Linear classifiers find a straight line (or a hyperplane) to separate instances into distinct classes. Non-linear classifiers can find more complex separation that is not linear.
+
 26. Give 2 examples each for linear and non-linear classifiers?
+
+    Linear classifier: simple perceptron, logistic regression.
+
+    Non-linear classifier: multi-layer neural networks, decision trees.
+
 27. What type of data do you require to use a non-linear classifier?
+
+    Data that is not linearly separable.
+
 28. What is a loss function in deep learning?
+
+    A function that is used to evaluate the quality of a neural network's output. It is used to compute the difference between the predicted output and the true output.
+
 29. Give 5 examples of loss functions used for classification task?
+
+    cross-entropy
+    binary cross-entropy
+    categorical cross-entropy
+    KL divergence
+    hinge loss
+    
 30. Give 5 examples of loss functions used for regression task?
+
+    mean squared error (MSE)
+    mean absolute error (MAE)
+    Huber
+
 31. How does a loss function solve the maximum likelihood expectation?
+
+    A loss function describes an error in the prediction, a difference between the predicted solution and real solution. By minimizing a loss function, we make the predicted and real distributions more similar, thus we maximize the likelihood of the predicted distribution given the real distribution.
+
 32. How does a loss function minimize the difference between the predicted and actual
     probabilities?
 33. What is the difference between binary cross-entropy and categorical cross-entropy?
