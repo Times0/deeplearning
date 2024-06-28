@@ -87,6 +87,10 @@ The induced field is the sum of the products of the weights and the inputs of a 
 
 15. Give 3 examples each of feedforward neural network and recurrent neural network?
 
+    Feedforward neural networks: perceptron, MLP, CNN
+
+    Recurrent neural networks: LSTM, BiLSTM, recurrent MLP
+
 16. What is supervised learning?
 
     We have labels associated to each value in the data
@@ -102,9 +106,21 @@ The induced field is the sum of the products of the weights and the inputs of a 
     unsupervised learning: clustering, dimensionality reduction, anomaly detection (e.g. in time series)
 
 19. What is self-supervised learning?
+
+    A paradigm in machine learning where an algorithm generates labels from the data itself and uses these learned labels in a supervised manner.
+
 20. What is weakly-supervised learning?
+
+    In weakly-supervised learning, the algorithms use imprecise labels predicted with a help of external methods that do not guarantee full accuracy, like label prediction functions. 
+
+
 21. What is semi-supervised learning?
+
+    Only a part of data is labeled and the rest of data is unlabeled. A semi-supervised algorithm uses the outputs learned from the labeled data as examples to predict labels of unlabeled instances.
+
 22. When would you choose to train your model in an unsupervised manner?
+
+    When labels are not available and it's too expensive to label the data 
 
 23. Mention the 3 standard splits of a dataset?
 
