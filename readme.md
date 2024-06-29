@@ -179,25 +179,19 @@ The induced field is the sum of the products of the weights and the inputs of a 
 
     Categorical cross-entropy is used for multi-class classification problems, where the output layer has multiple neurons, each corresponding to a class label. The softmax activation function is applied to the output layer to obtain a probability distribution over the classes. 
 
-    $$
-    softmax(s)_i = \frac{e^{s_i}}{\sum_{j}^{C} e^{s_j}}
-    $$
+    $$\text{softmax}(s) = \frac{e^{s_i}}{\sum_{j=1}^{C} e^{s_j}} $$
 
-    $$
-    Categorical\_CE = -\sum_{i}^{C} t_i \log(softmax(s)_i)
-    $$
+    $$\text{CategoricalCE} = {-\sum_{i}^{C} t_i \log(softmax(s)_i)} $$
+
     
     where  C is the number of classes, t_i is the ground truth label for class i, and  softmax(s)_i is the predicted probability for class i. 
 
     Binary cross-entropy is used for binary classification problems, where the output layer has a single neuron that predicts the probability of the positive class. The sigmoid activation function is applied to the output layer to obtain a probability value between 0 and 1. 
 
-    $$
-    sigmoid(s)_i = \frac{1}{1 + e^{-s_i}}
-    $$
+    $$sigmoid(s)_i = \frac{1}{1 + e^{-s_i}}$$
 
-    $`
-    Binary\_CE = - \sum_{i=1}^{C' = 2} t_i \log(sigmoid(s)_i) = -t_1 \log(sigmoid(s_1)) - (1 - t_1) \log(1 - sigmoid(s_1))
-    `$
+    $$\text{BinaryCE} = - \sum_{i=1}^{C' = 2} t_i \log(sigmoid(s)_i) = -t_1 \log(sigmoid(s_1)) - (1 - t_1) \log(1 - sigmoid(s_1)) $$
+
 
     where  t_1 is the ground truth label for the positive class, and  sigmoid(s)_1 is the predicted probability for the positive class.
 
@@ -214,40 +208,30 @@ The induced field is the sum of the products of the weights and the inputs of a 
 
     MAE uses absolute error (L1) and MSE uses squared error (L2).
 37. What is the mathematical formula for MSE?
-    $$
-    \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2
-    $$
+
+    $$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2$$
 
 38. What is the mathematical formula for Huber loss?
-    $$
-    L_\delta (a) = 
-    \begin{cases} 
-    \frac{1}{2} a^2 & \text{for } |a| \leq \delta \\
-    \delta *(|a| - \frac{1}{2} \delta) & \text{for } |a| > \delta 
-    \end{cases}
 
-    \text{where } a = \hat{y}_i - y_i
-    $$
+    <img width="364" alt="huber_function"  src="https://github.com/sabinaaskerova/deeplearning/assets/91430159/cfed6f97-2510-4451-8b62-f1bde4e12ab4">
 
-    $$
-    \text{Huber\_Loss} = \frac{1}{n} \sum_{i=1}^{n} L_\delta (\hat{y}_i - y_i)
-$$
+    $$\text{HuberLoss} = \frac{1}{n} \sum_{i=1}^{n} L_\delta (\hat{y}_i - y_i)$$
 
     Basically, in Huber loss, we use MSE when the difference between the  prediction and the actual value is less than threshold delta and MAE otherwise.
 
 
-39. What is margin contrastive loss?
-40. What is Regularization?
-41. Why do you need regularization in deep learning model training?
-42. Outline the training loop?
-43. What is local minimum?
-44. What is global minimum?
-45. How can a model get stuck in the local minimum?
-46. How can you get your model out of a local minimum?
-47. How can you compute a gradient of a function over a computational graph?
-48. Give 5 reasons why you need a GPU over a CPU in model training?
-49. What is a deep learning framework?
-50. Give 4 examples of a standard deep learning framework?
+40. What is margin contrastive loss?
+41. What is Regularization?
+42. Why do you need regularization in deep learning model training?
+43. Outline the training loop?
+44. What is local minimum?
+45. What is global minimum?
+46. How can a model get stuck in the local minimum?
+47. How can you get your model out of a local minimum?
+48. How can you compute a gradient of a function over a computational graph?
+49. Give 5 reasons why you need a GPU over a CPU in model training?
+50. What is a deep learning framework?
+51. Give 4 examples of a standard deep learning framework?
 
     PyTorch
 
@@ -257,32 +241,32 @@ $$
     
     Theano
 
-51. Give 4 importance of using a deep learning framework?
-52. What does it mean that a deep learning framework's graph is static?
-53. What does it mean that a deep learning framework's graph is dynamic?
-54. Give 3 examples of dynamic deep learning frameworks?
-55. What is a tensor?
-56. Mention 4 possible data types of a tensor?
-57. What are the properties of a tensor?
-58. How can you calculate the dimension and shape of a tensor?
-59. Mention 7 groups of tensor operations and give 1 example of each?
-60. How do you slice a one-dimensional tensor?
-61. What is the use of "axis" in tensor operation?
-62. Differentiate between squeeze and reshape operation?
-63. Name 4 places we can find tensors in deep learning models?
-64. Name 4 properties of images that qualifies them as tensors?
-65. Mention 10 different tensor operations that can be performed on images?
-66. What is data augmentation?
-67. What is the benefit of data augmentation in model training?
-68. Give 5 image preprocessing techniques that can form styles of data augmentation?
-69. What is a dataset?
-70. Name 5 modalities of data in a dataset?
-71. What does it mean to feed data in batches?
-72. What is the super class of a PyTorch dataset class?
-73. Name 3 compulsory functions to implement in a PyTorch dataset class and their functions?
-74. What is a dataloader?
-75. What are the major considerations when building a dataloader?
-76. What is a Convolutional Neural Network and what is it used for?
+52. Give 4 importance of using a deep learning framework?
+53. What does it mean that a deep learning framework's graph is static?
+54. What does it mean that a deep learning framework's graph is dynamic?
+55. Give 3 examples of dynamic deep learning frameworks?
+56. What is a tensor?
+57. Mention 4 possible data types of a tensor?
+58. What are the properties of a tensor?
+59. How can you calculate the dimension and shape of a tensor?
+60. Mention 7 groups of tensor operations and give 1 example of each?
+61. How do you slice a one-dimensional tensor?
+62. What is the use of "axis" in tensor operation?
+63. Differentiate between squeeze and reshape operation?
+64. Name 4 places we can find tensors in deep learning models?
+65. Name 4 properties of images that qualifies them as tensors?
+66. Mention 10 different tensor operations that can be performed on images?
+67. What is data augmentation?
+68. What is the benefit of data augmentation in model training?
+69. Give 5 image preprocessing techniques that can form styles of data augmentation?
+70. What is a dataset?
+71. Name 5 modalities of data in a dataset?
+72. What does it mean to feed data in batches?
+73. What is the super class of a PyTorch dataset class?
+74. Name 3 compulsory functions to implement in a PyTorch dataset class and their functions?
+75. What is a dataloader?
+76. What are the major considerations when building a dataloader?
+77. What is a Convolutional Neural Network and what is it used for?
 
 CNN is a type of a Deep Neural Network for local **feature extraction** at every layer. Meaningful features are learnt from small, localized regions of the input data.
 
