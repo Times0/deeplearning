@@ -220,17 +220,72 @@ The induced field is the sum of the products of the weights and the inputs of a 
     Basically, in Huber loss, we use MSE when the difference between the  prediction and the actual value is less than threshold delta and MAE otherwise.
 
 
-40. What is margin contrastive loss?
+39. What is margin contrastive loss?
+
+    Loss function used in similarity learning models. The goal is to put the similar examples closer to each other and disimilar ones further away from each other in a feature space. If the distance between similar ones is larger than a certain margin, the loss is positive. If the distance between disimilar ones is smaller than this margin, the loss is again positive. 
+    
 41. What is Regularization?
+
+    Regularization is a technique that either adds a penalty term to the loss function (like L1, L2 or elastic net regularizations) or stops the training before the model overfits (early stopping) or zeroes out some random neurons (in case of neural networks) so that the model does not rely too much on some specific neurons in its predictions (dropout)
+
 42. Why do you need regularization in deep learning model training?
+
+    In order to prevent a model from overfitting. The goal of regularization is that the model doesn't perform too well on the training data and that is can generalize on the unseen data.
+
 43. Outline the training loop?
+
+    Forward pass
+
+    Loss computation
+
+    Backward propagation
+
+    Parameters update
+
 44. What is local minimum?
+
+    A point where a function value is minimal  for a certain interval and the gradient of the function equals zero.
+
 45. What is global minimum?
+
+    A point where a function value is minimal for its entire definition domain and the gradient of the function equals zero.
+
 46. How can a model get stuck in the local minimum?
+
+    It can get stuck during the optimization phase, when the gradient becomes zero in a point that is not a global minimum.
+    
 47. How can you get your model out of a local minimum?
+    
+    We can:
+    
+    - use momentum in our gradient descent, i.e. the direction of previous gradients in order to skip the shallow minimum and to continue the search (think of momentum as you usually imagine it in fast moving physical objects).
+
+    - use advanced optimizers (AdaGrad, RMSProp, Adam) that use adaptive learning rate and momentum
+
+    - introduce stochasticity to gradient descent in order to explore random points
+    
+    
+
 48. How can you compute a gradient of a function over a computational graph?
+
+    Use backpropragation algorithm (chain rule)
+
 49. Give 5 reasons why you need a GPU over a CPU in model training?
+
+    GPUs can calculate multiple operations simultaneously (thus, training is going faster)
+
+    GPUs are dedicated to perform simple floating point operations, which are used in neural network training, and have fewer transistors dedicated to cache or flow controls
+
+    GPUs have video RAM (VRAM) which allows for faster memory access
+
+    GPUs can be used in distributed computing environments and therefore offer a better scalability for large deep learning projects
+
+    Many GPUs have specialized hardware for deep learning, such as tensor cores
+
 50. What is a deep learning framework?
+
+    A library that provides tools specific to the development, training and evaluation of deep learning architectures
+
 51. Give 4 examples of a standard deep learning framework?
 
     PyTorch
