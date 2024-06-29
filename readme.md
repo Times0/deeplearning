@@ -172,12 +172,70 @@ The induced field is the sum of the products of the weights and the inputs of a 
 
 32. How does a loss function minimize the difference between the predicted and actual
     probabilities?
+
+    A loss function computes the difference between the predicted probability and the actual probability for every instance. Thus, by searching for parameters of a model that minimize the value of a loss function, the model starts to predict probabilities that are as closest to the real ones as possible.
+
 33. What is the difference between binary cross-entropy and categorical cross-entropy?
+
+    Categorical cross-entropy is used for multi-class classification problems, where the output layer has multiple neurons, each corresponding to a class label. The softmax activation function is applied to the output layer to obtain a probability distribution over the classes. 
+
+    $$
+    softmax(s)_i = \frac{e^{s_i}}{\sum_{j}^{C} e^{s_j}}
+    $$
+
+    $$
+    Categorical\_CE = -\sum_{i}^{C} t_i \log(softmax(s)_i)
+    $$
+    
+    where  C is the number of classes, t_i is the ground truth label for class i, and  softmax(s)_i is the predicted probability for class i. 
+
+    Binary cross-entropy is used for binary classification problems, where the output layer has a single neuron that predicts the probability of the positive class. The sigmoid activation function is applied to the output layer to obtain a probability value between 0 and 1. 
+
+    $$
+    sigmoid(s)_i = \frac{1}{1 + e^{-s_i}}
+    $$
+
+    $`
+    Binary\_CE = - \sum_{i=1}^{C' = 2} t_i \log(sigmoid(s)_i) = -t_1 \log(sigmoid(s_1)) - (1 - t_1) \log(1 - sigmoid(s_1))
+    `$
+
+    where  t_1 is the ground truth label for the positive class, and  sigmoid(s)_1 is the predicted probability for the positive class.
+
+
 34. When do you use a binary cross-entropy over a categorical cross-entropy loss function?
+
+    When you have a binary classification problem.
+
 35. When do you use a categorical cross-entropy over a binary cross-entropy loss function?
+
+    When you have a multiple classes classification problem.
+
 36. What is the main difference between MAE and MSE loss function?
+
+    MAE uses absolute error (L1) and MSE uses squared error (L2).
 37. What is the mathematical formula for MSE?
+    $$
+    \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2
+    $$
+
 38. What is the mathematical formula for Huber loss?
+    $$
+    L_\delta (a) = 
+    \begin{cases} 
+    \frac{1}{2} a^2 & \text{for } |a| \leq \delta \\
+    \delta *(|a| - \frac{1}{2} \delta) & \text{for } |a| > \delta 
+    \end{cases}
+
+    \text{where } a = \hat{y}_i - y_i
+    $$
+
+    $$
+    \text{Huber\_Loss} = \frac{1}{n} \sum_{i=1}^{n} L_\delta (\hat{y}_i - y_i)
+$$
+
+    Basically, in Huber loss, we use MSE when the difference between the  prediction and the actual value is less than threshold delta and MAE otherwise.
+
+
 39. What is margin contrastive loss?
 40. What is Regularization?
 41. Why do you need regularization in deep learning model training?
@@ -190,6 +248,15 @@ The induced field is the sum of the products of the weights and the inputs of a 
 48. Give 5 reasons why you need a GPU over a CPU in model training?
 49. What is a deep learning framework?
 50. Give 4 examples of a standard deep learning framework?
+
+    PyTorch
+
+    Tensorflow
+
+    Keras
+    
+    Theano
+
 51. Give 4 importance of using a deep learning framework?
 52. What does it mean that a deep learning framework's graph is static?
 53. What does it mean that a deep learning framework's graph is dynamic?
