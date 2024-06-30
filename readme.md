@@ -301,16 +301,68 @@ The induced field is the sum of the products of the weights and the inputs of a 
 54. What does it mean that a deep learning framework's graph is dynamic?
 55. Give 3 examples of dynamic deep learning frameworks?
 56. What is a tensor?
+
+    A tensor in deep learning is a data structure like multidimensional array but that can be run on either CPU or GPU.
+
 57. Mention 4 possible data types of a tensor?
+
+    float (e.g., float32, float64)
+    integer (e.g., int8, int32, int64)
+    boolean (bool)
+    complex (e.g., complex64, complex128)
+
 58. What are the properties of a tensor?
+
+    data type, rank (number of dimension), shape (number of elements in each dimension)
+
 59. How can you calculate the dimension and shape of a tensor?
+
+    Tensor.dim(), Tensor.shape
+
 60. Mention 7 groups of tensor operations and give 1 example of each?
+
+    Arithmetic operations (e.g., addition)
+    
+    Comparison operations (e.g., less than)
+
+    Logical operations (e.g., and)
+
+    Reduction operations (e.g., sum)
+    
+    Transformation operations (e.g., reshape)
+    
+    Generation operations (e.g., ones_like)
+    
+    Indexing and slicing operations (e.g., tensor[0])
+
 61. How do you slice a one-dimensional tensor?
+
+    tensor[start:stop:step]
+
 62. What is the use of "axis" in tensor operation?
+
+    Specify along which dimension to apply the operation
+
 63. Differentiate between squeeze and reshape operation?
+
+    Squeeze removes all 1's in original dimensions, while reshape changes the tensor to be of the specified dimension.
+
 64. Name 4 places we can find tensors in deep learning models?
+
+    input data, activations of layers, weights and biases and gradients
+
 65. Name 4 properties of images that qualifies them as tensors?
+
+    they have dimensions, they have a shape, they can undergo tensor operations, pixels are represented by numerical values
+
 66. Mention 10 different tensor operations that can be performed on images?
+
+    - reshaping
+    - rotation
+    - flipping
+    - cropping
+    - filtering
+
 67. What is data augmentation?
 68. What is the benefit of data augmentation in model training?
 69. Give 5 image preprocessing techniques that can form styles of data augmentation?
