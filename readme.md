@@ -363,6 +363,7 @@ The induced field is the sum of the products of the weights and the inputs of a 
     - cropping
     - filtering
 
+
 67. What is data augmentation?
 68. What is the benefit of data augmentation in model training?
 69. Give 5 image preprocessing techniques that can form styles of data augmentation?
@@ -375,14 +376,14 @@ The induced field is the sum of the products of the weights and the inputs of a 
 76. What are the major considerations when building a dataloader?
 77. What is a Convolutional Neural Network and what is it used for?
 
-CNN is a type of a Deep Neural Network for local **feature extraction** at every layer. Meaningful features are learnt from small, localized regions of the input data.
+    CNN is a type of a Deep Neural Network for local **feature extraction** at every layer. Meaningful features are learnt from small, localized regions of the input data.
 
-The CNN architectures are primarily used for computer vision tasks but are not limited to them.
-Basically, CNN models can be used on all sorts of data, like text or audio, as long as the input can be split into features. 
+    The CNN architectures are primarily used for computer vision tasks but are not limited to them.
+    Basically, CNN models can be used on all sorts of data, like text or audio, as long as the input can be split into features. 
 
-For example, an hierarchy to be learnt from an image can be: pixel -> edge -> texton -> motif -> contour -> object.
+    For example, an hierarchy to be learnt from an image can be: pixel -> edge -> texton -> motif -> contour -> object.
 
-For text data, it can be: character -> word -> clause -> sentence -> story.
+    For text data, it can be: character -> word -> clause -> sentence -> story.
 
 
 77. Mention at least 7 layers that can be found in a CNN?
@@ -528,22 +529,84 @@ For text data, it can be: character -> word -> clause -> sentence -> story.
 213. Mention and explain the functions of the 3 gates of an LSTM?
 214. Name 3 non-RNN temporal models?
 215. What is an attention mechanism in deep learning?
+    
+    A mechanism that allows a model to focus on specific part of the input when producing an output.
+
 216. Why is attention mechanism important?
+
+    The attention mechanism is important because it allows the model to focus on the most relevant parts of the input, which improves the model's ability to understand and generate sequences, ultimately enhancing its performance and accuracy. (It can also help reduce unnecessary computation).
+
 217. How does attention mechanism overcome the issues in RNN?
+
+    By allowing the model to selectively focus on different parts of the input at each time step, attention mechanism enables the model to better understand the context, improving its performance 
+
 218. What is sequence-to-sequence modeling?
+
+    Sequence-to-sequence modeling is a type of model that converts one sequence of data into another. It typically consists of an encoder that processes the input sequence and a decoder that generates the output sequence
+
 219. What is a basic building block of a transformer?
+
+    self-attention layer, layer normalization, feed-forward layer, residual connections
+
 220. Write the equation of self-attention?
+
+    Attention(Q, K, V) = softmax(QK^T / sqrt(d_k))V
+
+    Q, K, and V are the query, key, and value, d_k is the dimension of the keys
+
 221. What are the advantages of multi-head attention?
+
+    capturing various sides of the input, improved expressiveness of the model and robustness in case one head attends to not-so-important part.
+
 222. What is a cross attention?
+
+    Cross attention is an attention that attends to parts of several different input sequences. The model attends to one sequence while considering another sequence. It typically involves a query sequence attending to key-value pair sequences from different inputs.
+
 223. What is the use of alignment score in attention process?
+
+    The alignment score measures the importance of different parts of the input
+
 224. Differentiate between local and global attention?
+
+    In local attention, the attention is placed on few input parts, and the global attention is placed on all input parts. It means that in global attention all the input is important for generating the context vector (a vector of representations for each word in the input)
+
 225. Differentiate between temporal and spatial attention?
+
+    Temporal attention focuses on the time dimension of the input, while spatial attention focuses on the spatial dimensions, such as the height and width of an image. Temporal attention is often used in machine translation and speech recognition, while spatial attention is often used in image classification and object detection.
+
 226. Differentiate between positional and channel attention?
-227. What is do-product attention?
+
+    Positional attention focuses on the position of each element in the input sequence (e.g. position of the words in a sentence), while channel attention focuses on the different channels or features of the input (e.g. RGB channels in an image).
+
+227. What is dot-product attention?
+
+    It's a type of attention that computes the attention scores by doing the dot-product of queries and keys.
+
 228. List and explain the different attention operations?
+
+    - dot-product
+    - multi-head
+    - scaled dot-product
+    - additive attention (uses a feed-forward neural network to compute the attention scores)
+    - self-attention (query, key, and value vectors all come from the same input sequence)
+    - cross-attention
+    - local
+    - global
+
+
 229. What is the use of SoftMax in the attention process?
+
+    The softmax function is used in the attention process to normalize the attention scores (regardless of how they are computed, such as through dot-product or additive mechanisms). This ensures that the attention weights sum up to 1, converting them into a probability distribution. This normalization helps the model to focus on the most relevant parts of the input sequence.
+
 230. What is the function of positional encoding in a Transformer?
+
+    Positional encoding is used to encode the information about the position of an element in the input sequence (e.g. token in a sentence) with the information about the element itself. The position of an element in a sequence is important because it helps to know how much of attention we should give this element. It is especially useful in NLP tasks, as different  orders of words in a text can result in totally different meanings.
+
+
 231. What is the use of masked attention in a Transformer?
+
+    Masked attention is used in the decoder part of a transformer to prevent the model from attending to future tokens that have not been generated yet. This ensures that the prediction for each position in the output sequence depends only on the known outputs up to that position. We set the attention scores of future tokens to negative infinity (which results in a probability of zero after applying the softmax), to ignore them during the attention computation 
+
 232. How can an image be treated as a sequence?
 233. List at least 5 popular transformer models and their tasks?
 234. What are the advantages of a transformer over an RNN?
