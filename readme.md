@@ -608,8 +608,27 @@ The induced field is the sum of the products of the weights and the inputs of a 
     Masked attention is used in the decoder part of a transformer to prevent the model from attending to future tokens that have not been generated yet. This ensures that the prediction for each position in the output sequence depends only on the known outputs up to that position. We set the attention scores of future tokens to negative infinity (which results in a probability of zero after applying the softmax), to ignore them during the attention computation 
 
 232. How can an image be treated as a sequence?
+
+    Each pixel of an image can be treated as an element of a sequence. Another option is for the image to be split up to patches of a certain dimension. These patches are then treated as elements of a sequence.
+
 233. List at least 5 popular transformer models and their tasks?
+
+    BERT: question answering, NER, sentiment analysis
+
+    GPT: text generation, machine translation
+
+    T5: translation, question answering
+
+    ViT: image classification
+
+    DETR: object detection
+
 234. What are the advantages of a transformer over an RNN?
+
+    Transformers are faster as they process sequences as a whole and not sequentially like does an RNN. They're therefore highly parallelizable and more efficient during training on GPUs.
+
+    Transformers use attention mechanism which allows to capture the dependencies of different parts of an input sequence more effectively (because each token can attend to any other token in the sequence).
+
 235. What is the complementary model needed to train a GAN?
 236. Explain the concept of min-max in adversarial learning?
 237. What is a diffusion process?
