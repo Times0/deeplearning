@@ -34,6 +34,8 @@ Machine learning is an artificial intelligence technique where the machine learn
 
 Deep learning is the process for a machine to learn by using an artificial neural network and data.
 
+Deep learning techniques belong to a category within machine learning techniques. The main difference is that their architectures consist of multiple layers, which allows for such models to learn **feature hierarchies**. Hence, layers of deep learning models learn intermediate representations of the data gradually, up until the desired outcome. 
+
 6. How does ANN learn complex patterns and relationships in data?
 
 It can learn complex patterns thanks to its different weights. What makes the neural network powerful is its ability to depict non linear patterns with the activation functions. A network can approximate any function. (Universal approximation theorem)
@@ -56,7 +58,17 @@ The induced field is the sum of the products of the weights and the inputs of a 
     - silu
 11. Write the mathematical formula of at least 10 activation functions.
 
-    Boring
+    Binary step: $`f(x) = \begin{cases} 0 & \text{if } x < 0 \\ 1 & \text{if } x \ge 0 \end{cases}`$
+     
+     $`\sigma(x) = \frac{1}{1 + e^{-x}}`$
+
+     $`\text{ReLU}(x) = \max(0, x) = \begin{cases} 0 & \text{if } x \le 0 \\ x & \text{if } x > 0 \end{cases}`$
+
+     $`\text{Leaky ReLU}(x) = \begin{cases} 0.01x & \text{if } x \le 0 \\ x & \text{if } x > 0 \end{cases}`$
+
+     $`\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}`$
+
+     $`\text{SiLU}(x) = \frac{x}{1 + e^{-x}}`$
 
 12. Mention at least 3 activation functions that scale the values of their inputs between 0 and 1?
 
@@ -75,6 +87,10 @@ The induced field is the sum of the products of the weights and the inputs of a 
 
 15. Give 3 examples each of feedforward neural network and recurrent neural network?
 
+    Feedforward neural networks: perceptron, MLP, CNN
+
+    Recurrent neural networks: LSTM, BiLSTM, recurrent MLP
+
 16. What is supervised learning?
 
     We have labels associated to each value in the data
@@ -84,65 +100,292 @@ The induced field is the sum of the products of the weights and the inputs of a 
     We Don't have labels associated to each value in the data
 
 18. Give 3 examples of tasks performed using supervised and unsupervised learning?
+
+    supervised learning: image classification, sentiment analysis, machine translation
+
+    unsupervised learning: clustering, dimensionality reduction, anomaly detection (e.g. in time series)
+
 19. What is self-supervised learning?
+
+    A paradigm in machine learning where an algorithm generates labels from the data itself and uses these learned labels in a supervised manner.
+
 20. What is weakly-supervised learning?
+
+    In weakly-supervised learning, the algorithms use imprecise labels predicted with a help of external methods that do not guarantee full accuracy, like label prediction functions. 
+
+
 21. What is semi-supervised learning?
+
+    Only a part of data is labeled and the rest of data is unlabeled. A semi-supervised algorithm uses the outputs learned from the labeled data as examples to predict labels of unlabeled instances.
+
 22. When would you choose to train your model in an unsupervised manner?
+
+    When labels are not available and it's too expensive to label the data 
+
 23. Mention the 3 standard splits of a dataset?
+
+    Training set, validation set, test set
+
 24. What are the uses of each of the splits of dataset in deep learning experiment?
+
+    Training set is used to train the model.
+
+    Validation set is used to select the best hyperparameters of the model and to prevent the model from overfitting to the training set data. If the model's performance on the validation set starts to decrease, while the performance on the training set continues to increase, this is a sign that the model is overfitting.
+
+    Test set is used to evaluate the model and estimate its performance on unseen data.
+
 25. Differentiate between linear and non-linear classifier?
+
+    Linear classifiers find a straight line (or a hyperplane) to separate instances into distinct classes. Non-linear classifiers can find more complex separation that is not linear.
+
 26. Give 2 examples each for linear and non-linear classifiers?
+
+    Linear classifier: simple perceptron, logistic regression.
+
+    Non-linear classifier: multi-layer neural networks, decision trees.
+
 27. What type of data do you require to use a non-linear classifier?
+
+    Data that is not linearly separable.
+
 28. What is a loss function in deep learning?
+
+    A function that is used to evaluate the quality of a neural network's output. It is used to compute the difference between the predicted output and the true output.
+
 29. Give 5 examples of loss functions used for classification task?
+
+    cross-entropy
+    binary cross-entropy
+    categorical cross-entropy
+    KL divergence
+    hinge loss
+    
 30. Give 5 examples of loss functions used for regression task?
+
+    mean squared error (MSE)
+    mean absolute error (MAE)
+    Huber
+
 31. How does a loss function solve the maximum likelihood expectation?
+
+    A loss function describes an error in the prediction, a difference between the predicted solution and real solution. By minimizing a loss function, we make the predicted and real distributions more similar, thus we maximize the likelihood of the predicted distribution given the real distribution.
+
 32. How does a loss function minimize the difference between the predicted and actual
     probabilities?
+
+    A loss function computes the difference between the predicted probability and the actual probability for every instance. Thus, by searching for parameters of a model that minimize the value of a loss function, the model starts to predict probabilities that are as closest to the real ones as possible.
+
 33. What is the difference between binary cross-entropy and categorical cross-entropy?
+
+    Categorical cross-entropy is used for multi-class classification problems, where the output layer has multiple neurons, each corresponding to a class label. The softmax activation function is applied to the output layer to obtain a probability distribution over the classes. 
+
+    $$\text{softmax}(s) = \frac{e^{s_i}}{\sum_{j=1}^{C} e^{s_j}} $$
+
+    $$\text{CategoricalCE} = {-\sum_{i}^{C} t_i \log(softmax(s)_i)} $$
+
+    
+    where  C is the number of classes, t_i is the ground truth label for class i, and  softmax(s)_i is the predicted probability for class i. 
+
+    Binary cross-entropy is used for binary classification problems, where the output layer has a single neuron that predicts the probability of the positive class. The sigmoid activation function is applied to the output layer to obtain a probability value between 0 and 1. 
+
+    $$sigmoid(s)_i = \frac{1}{1 + e^{-s_i}}$$
+
+    $$\text{BinaryCE} = - \sum_{i=1}^{C' = 2} t_i \log(sigmoid(s)_i) = -t_1 \log(sigmoid(s_1)) - (1 - t_1) \log(1 - sigmoid(s_1)) $$
+
+
+    where  t_1 is the ground truth label for the positive class, and  sigmoid(s)_1 is the predicted probability for the positive class.
+
+
 34. When do you use a binary cross-entropy over a categorical cross-entropy loss function?
+
+    When you have a binary classification problem.
+
 35. When do you use a categorical cross-entropy over a binary cross-entropy loss function?
+
+    When you have a multiple classes classification problem.
+
 36. What is the main difference between MAE and MSE loss function?
+
+    MAE uses absolute error (L1) and MSE uses squared error (L2).
 37. What is the mathematical formula for MSE?
+
+    $$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2$$
+
 38. What is the mathematical formula for Huber loss?
+
+    <img width="364" alt="huber_function"  src="https://github.com/sabinaaskerova/deeplearning/assets/91430159/cfed6f97-2510-4451-8b62-f1bde4e12ab4">
+
+    $$\text{HuberLoss} = \frac{1}{n} \sum_{i=1}^{n} L_\delta (\hat{y}_i - y_i)$$
+
+    Basically, in Huber loss, we use MSE when the difference between the  prediction and the actual value is less than threshold delta and MAE otherwise.
+
+
 39. What is margin contrastive loss?
-40. What is Regularization?
-41. Why do you need regularization in deep learning model training?
-42. Outline the training loop?
-43. What is local minimum?
-44. What is global minimum?
-45. How can a model get stuck in the local minimum?
-46. How can you get your model out of a local minimum?
-47. How can you compute a gradient of a function over a computational graph?
-48. Give 5 reasons why you need a GPU over a CPU in model training?
-49. What is a deep learning framework?
-50. Give 4 examples of a standard deep learning framework?
-51. Give 4 importance of using a deep learning framework?
-52. What does it mean that a deep learning framework's graph is static?
-53. What does it mean that a deep learning framework's graph is dynamic?
-54. Give 3 examples of dynamic deep learning frameworks?
-55. What is a tensor?
-56. Mention 4 possible data types of a tensor?
-57. What are the properties of a tensor?
-58. How can you calculate the dimension and shape of a tensor?
-59. Mention 7 groups of tensor operations and give 1 example of each?
-60. How do you slice a one-dimensional tensor?
-61. What is the use of "axis" in tensor operation?
-62. Differentiate between squeeze and reshape operation?
-63. Name 4 places we can find tensors in deep learning models?
-64. Name 4 properties of images that qualifies them as tensors?
-65. Mention 10 different tensor operations that can be performed on images?
-66. What is data augmentation?
-67. What is the benefit of data augmentation in model training?
-68. Give 5 image preprocessing techniques that can form styles of data augmentation?
-69. What is a dataset?
-70. Name 5 modalities of data in a dataset?
-71. What does it mean to feed data in batches?
-72. What is the super class of a PyTorch dataset class?
-73. Name 3 compulsory functions to implement in a PyTorch dataset class and their functions?
-74. What is a dataloader?
-75. What are the major considerations when building a dataloader?
-76. What is a Convolutional Neural Network and what is it used for?
+
+    Loss function used in similarity learning models. The goal is to put the similar examples closer to each other and disimilar ones further away from each other in a feature space. If the distance between similar ones is larger than a certain margin, the loss is positive. If the distance between disimilar ones is smaller than this margin, the loss is again positive. 
+    
+41. What is Regularization?
+
+    Regularization is a technique that either adds a penalty term to the loss function (like L1, L2 or elastic net regularizations) or stops the training before the model overfits (early stopping) or zeroes out some random neurons (in case of neural networks) so that the model does not rely too much on some specific neurons in its predictions (dropout)
+
+42. Why do you need regularization in deep learning model training?
+
+    In order to prevent a model from overfitting. The goal of regularization is that the model doesn't perform too well on the training data and that is can generalize on the unseen data.
+
+43. Outline the training loop?
+
+    Forward pass
+
+    Loss computation
+
+    Backward propagation
+
+    Parameters update
+
+44. What is local minimum?
+
+    A point where a function value is minimal  for a certain interval and the gradient of the function equals zero.
+
+45. What is global minimum?
+
+    A point where a function value is minimal for its entire definition domain and the gradient of the function equals zero.
+
+46. How can a model get stuck in the local minimum?
+
+    It can get stuck during the optimization phase, when the gradient becomes zero in a point that is not a global minimum.
+    
+47. How can you get your model out of a local minimum?
+    
+    We can:
+    
+    - use momentum in our gradient descent, i.e. the direction of previous gradients in order to skip the shallow minimum and to continue the search (think of momentum as you usually imagine it in fast moving physical objects).
+
+    - use advanced optimizers (AdaGrad, RMSProp, Adam) that use adaptive learning rate and momentum
+
+    - introduce stochasticity to gradient descent in order to explore random points
+    
+    
+
+48. How can you compute a gradient of a function over a computational graph?
+
+    Use backpropragation algorithm (chain rule)
+
+49. Give 5 reasons why you need a GPU over a CPU in model training?
+
+    GPUs can calculate multiple operations simultaneously (thus, training is going faster)
+
+    GPUs are dedicated to perform simple floating point operations, which are used in neural network training, and have fewer transistors dedicated to cache or flow controls
+
+    GPUs have video RAM (VRAM) which allows for faster memory access
+
+    GPUs can be used in distributed computing environments and therefore offer a better scalability for large deep learning projects
+
+    Many GPUs have specialized hardware for deep learning, such as tensor cores
+
+50. What is a deep learning framework?
+
+    A library that provides tools specific to the development, training and evaluation of deep learning architectures
+
+51. Give 4 examples of a standard deep learning framework?
+
+    PyTorch
+
+    Tensorflow
+
+    Keras
+    
+    Theano
+
+52. Give 4 importance of using a deep learning framework?
+53. What does it mean that a deep learning framework's graph is static?
+54. What does it mean that a deep learning framework's graph is dynamic?
+55. Give 3 examples of dynamic deep learning frameworks?
+56. What is a tensor?
+
+    A tensor in deep learning is a data structure like multidimensional array but that can be run on either CPU or GPU.
+
+57. Mention 4 possible data types of a tensor?
+
+    float (e.g., float32, float64)
+    integer (e.g., int8, int32, int64)
+    boolean (bool)
+    complex (e.g., complex64, complex128)
+
+58. What are the properties of a tensor?
+
+    data type, rank (number of dimension), shape (number of elements in each dimension)
+
+59. How can you calculate the dimension and shape of a tensor?
+
+    Tensor.dim(), Tensor.shape
+
+60. Mention 7 groups of tensor operations and give 1 example of each?
+
+    Arithmetic operations (e.g., addition)
+    
+    Comparison operations (e.g., less than)
+
+    Logical operations (e.g., and)
+
+    Reduction operations (e.g., sum)
+    
+    Transformation operations (e.g., reshape)
+    
+    Generation operations (e.g., ones_like)
+    
+    Indexing and slicing operations (e.g., tensor[0])
+
+61. How do you slice a one-dimensional tensor?
+
+    tensor[start:stop:step]
+
+62. What is the use of "axis" in tensor operation?
+
+    Specify along which dimension to apply the operation
+
+63. Differentiate between squeeze and reshape operation?
+
+    Squeeze removes all 1's in original dimensions, while reshape changes the tensor to be of the specified dimension.
+
+64. Name 4 places we can find tensors in deep learning models?
+
+    input data, activations of layers, weights and biases and gradients
+
+65. Name 4 properties of images that qualifies them as tensors?
+
+    they have dimensions, they have a shape, they can undergo tensor operations, pixels are represented by numerical values
+
+66. Mention 10 different tensor operations that can be performed on images?
+
+    - reshaping
+    - rotation
+    - flipping
+    - cropping
+    - filtering
+
+
+67. What is data augmentation?
+68. What is the benefit of data augmentation in model training?
+69. Give 5 image preprocessing techniques that can form styles of data augmentation?
+70. What is a dataset?
+71. Name 5 modalities of data in a dataset?
+72. What does it mean to feed data in batches?
+73. What is the super class of a PyTorch dataset class?
+74. Name 3 compulsory functions to implement in a PyTorch dataset class and their functions?
+75. What is a dataloader?
+76. What are the major considerations when building a dataloader?
+77. What is a Convolutional Neural Network and what is it used for?
+
+    CNN is a type of a Deep Neural Network for local **feature extraction** at every layer. Meaningful features are learnt from small, localized regions of the input data.
+
+    The CNN architectures are primarily used for computer vision tasks but are not limited to them.
+    Basically, CNN models can be used on all sorts of data, like text or audio, as long as the input can be split into features. 
+
+    For example, an hierarchy to be learnt from an image can be: pixel -> edge -> texton -> motif -> contour -> object.
+
+    For text data, it can be: character -> word -> clause -> sentence -> story.
+
+
 77. Mention at least 7 layers that can be found in a CNN?
 78. What is a convolution?
 79. Write the mathematics of a convolution operation?
@@ -286,25 +529,106 @@ The induced field is the sum of the products of the weights and the inputs of a 
 213. Mention and explain the functions of the 3 gates of an LSTM?
 214. Name 3 non-RNN temporal models?
 215. What is an attention mechanism in deep learning?
+    
+    A mechanism that allows a model to focus on specific part of the input when producing an output.
+
 216. Why is attention mechanism important?
+
+    The attention mechanism is important because it allows the model to focus on the most relevant parts of the input, which improves the model's ability to understand and generate sequences, ultimately enhancing its performance and accuracy. (It can also help reduce unnecessary computation).
+
 217. How does attention mechanism overcome the issues in RNN?
+
+    By allowing the model to selectively focus on different parts of the input at each time step, attention mechanism enables the model to better understand the context, improving its performance 
+
 218. What is sequence-to-sequence modeling?
+
+    Sequence-to-sequence modeling is a type of model that converts one sequence of data into another. It typically consists of an encoder that processes the input sequence and a decoder that generates the output sequence
+
 219. What is a basic building block of a transformer?
+
+    self-attention layer, layer normalization, feed-forward layer, residual connections
+
 220. Write the equation of self-attention?
+
+    Attention(Q, K, V) = softmax(QK^T / sqrt(d_k))V
+
+    Q, K, and V are the query, key, and value, d_k is the dimension of the keys
+
 221. What are the advantages of multi-head attention?
+
+    capturing various sides of the input, improved expressiveness of the model and robustness in case one head attends to not-so-important part.
+
 222. What is a cross attention?
+
+    Cross attention is an attention that attends to parts of several different input sequences. The model attends to one sequence while considering another sequence. It typically involves a query sequence attending to key-value pair sequences from different inputs.
+
 223. What is the use of alignment score in attention process?
+
+    The alignment score measures the importance of different parts of the input
+
 224. Differentiate between local and global attention?
+
+    In local attention, the attention is placed on few input parts, and the global attention is placed on all input parts. It means that in global attention all the input is important for generating the context vector (a vector of representations for each word in the input)
+
 225. Differentiate between temporal and spatial attention?
+
+    Temporal attention focuses on the time dimension of the input, while spatial attention focuses on the spatial dimensions, such as the height and width of an image. Temporal attention is often used in machine translation and speech recognition, while spatial attention is often used in image classification and object detection.
+
 226. Differentiate between positional and channel attention?
-227. What is do-product attention?
+
+    Positional attention focuses on the position of each element in the input sequence (e.g. position of the words in a sentence), while channel attention focuses on the different channels or features of the input (e.g. RGB channels in an image).
+
+227. What is dot-product attention?
+
+    It's a type of attention that computes the attention scores by doing the dot-product of queries and keys.
+
 228. List and explain the different attention operations?
+
+    - dot-product
+    - multi-head
+    - scaled dot-product
+    - additive attention (uses a feed-forward neural network to compute the attention scores)
+    - self-attention (query, key, and value vectors all come from the same input sequence)
+    - cross-attention
+    - local
+    - global
+
+
 229. What is the use of SoftMax in the attention process?
+
+    The softmax function is used in the attention process to normalize the attention scores (regardless of how they are computed, such as through dot-product or additive mechanisms). This ensures that the attention weights sum up to 1, converting them into a probability distribution. This normalization helps the model to focus on the most relevant parts of the input sequence.
+
 230. What is the function of positional encoding in a Transformer?
+
+    Positional encoding is used to encode the information about the position of an element in the input sequence (e.g. token in a sentence) with the information about the element itself. The position of an element in a sequence is important because it helps to know how much of attention we should give this element. It is especially useful in NLP tasks, as different  orders of words in a text can result in totally different meanings.
+
+
 231. What is the use of masked attention in a Transformer?
+
+    Masked attention is used in the decoder part of a transformer to prevent the model from attending to future tokens that have not been generated yet. This ensures that the prediction for each position in the output sequence depends only on the known outputs up to that position. We set the attention scores of future tokens to negative infinity (which results in a probability of zero after applying the softmax), to ignore them during the attention computation 
+
 232. How can an image be treated as a sequence?
+
+    Each pixel of an image can be treated as an element of a sequence. Another option is for the image to be split up to patches of a certain dimension. These patches are then treated as elements of a sequence.
+
 233. List at least 5 popular transformer models and their tasks?
+
+    BERT: question answering, NER, sentiment analysis
+
+    GPT: text generation, machine translation
+
+    T5: translation, question answering
+
+    ViT: image classification
+
+    DETR: object detection
+
 234. What are the advantages of a transformer over an RNN?
+
+    Transformers are faster as they process sequences as a whole and not sequentially like does an RNN. They're therefore highly parallelizable and more efficient during training on GPUs.
+
+    Transformers use attention mechanism which allows to capture the dependencies of different parts of an input sequence more effectively (because each token can attend to any other token in the sequence).
+
 235. What is the complementary model needed to train a GAN?
 236. Explain the concept of min-max in adversarial learning?
 237. What is a diffusion process?
